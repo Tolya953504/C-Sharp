@@ -1,0 +1,13 @@
+C:\Users\AnatoliHP\Documents\Embarcadero\Studio\Projects\953504\ИСП 2сем\7лр\Лр7\Лр7\bin\Debug\netcoreapp3.1\Лр7.exe
+C:\Users\AnatoliHP\Documents\Embarcadero\Studio\Projects\953504\ИСП 2сем\7лр\Лр7\Лр7\bin\Debug\netcoreapp3.1\Лр7.deps.json
+C:\Users\AnatoliHP\Documents\Embarcadero\Studio\Projects\953504\ИСП 2сем\7лр\Лр7\Лр7\bin\Debug\netcoreapp3.1\Лр7.runtimeconfig.json
+C:\Users\AnatoliHP\Documents\Embarcadero\Studio\Projects\953504\ИСП 2сем\7лр\Лр7\Лр7\bin\Debug\netcoreapp3.1\Лр7.runtimeconfig.dev.json
+C:\Users\AnatoliHP\Documents\Embarcadero\Studio\Projects\953504\ИСП 2сем\7лр\Лр7\Лр7\bin\Debug\netcoreapp3.1\Лр7.dll
+C:\Users\AnatoliHP\Documents\Embarcadero\Studio\Projects\953504\ИСП 2сем\7лр\Лр7\Лр7\bin\Debug\netcoreapp3.1\Лр7.pdb
+C:\Users\AnatoliHP\Documents\Embarcadero\Studio\Projects\953504\ИСП 2сем\7лр\Лр7\Лр7\obj\Debug\netcoreapp3.1\Лр7.csprojAssemblyReference.cache
+C:\Users\AnatoliHP\Documents\Embarcadero\Studio\Projects\953504\ИСП 2сем\7лр\Лр7\Лр7\obj\Debug\netcoreapp3.1\Лр7.csproj.CoreCompileInputs.cache
+C:\Users\AnatoliHP\Documents\Embarcadero\Studio\Projects\953504\ИСП 2сем\7лр\Лр7\Лр7\obj\Debug\netcoreapp3.1\Лр7.AssemblyInfoInputs.cache
+C:\Users\AnatoliHP\Documents\Embarcadero\Studio\Projects\953504\ИСП 2сем\7лр\Лр7\Лр7\obj\Debug\netcoreapp3.1\Лр7.AssemblyInfo.cs
+C:\Users\AnatoliHP\Documents\Embarcadero\Studio\Projects\953504\ИСП 2сем\7лр\Лр7\Лр7\obj\Debug\netcoreapp3.1\Лр7.dll
+C:\Users\AnatoliHP\Documents\Embarcadero\Studio\Projects\953504\ИСП 2сем\7лр\Лр7\Лр7\obj\Debug\netcoreapp3.1\Лр7.pdb
+C:\Users\AnatoliHP\Documents\Embarcadero\Studio\Projects\953504\ИСП 2сем\7лр\Лр7\Лр7\obj\Debug\netcoreapp3.1\Лр7.genruntimeconfig.cache
