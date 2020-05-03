@@ -4,10 +4,10 @@ using System.Text;
 
 namespace Лр7
 {
-    class RationalNumber : IComparable, IEquatable<RationalNumber>
+    class RationalNumber : IComparable, IEquatable<RationalNumber>, IComparable<RationalNumber>
     {
-        private int numerator;
-        private uint denominator;
+        private readonly int numerator;
+        private readonly uint denominator;
         public RationalNumber()  // constructor
         {
         }
@@ -18,43 +18,59 @@ namespace Лр7
         }
         public bool Equals(RationalNumber other)
         {
-            if (other == null)
-                return false;
+            if (other == null) return false;
             int nod = NOD(numerator, (int)denominator);
             int otherNod = NOD(other.numerator, (int)other.denominator);
-            numerator /= nod;
-            denominator /= (uint)nod;
-            other.numerator /= otherNod;
-            other.denominator /= (uint)otherNod;
-            if (numerator == other.numerator && denominator == other.denominator)
-                return true;
-            else
-                return false;
+            int numeratorTmp = numerator;
+            numeratorTmp /= nod;
+            uint denominatorTmp = denominator;
+            denominatorTmp /= (uint)nod;
+            int otherNumerator = other.numerator;
+            otherNumerator /= otherNod;
+            uint otherDenominator = other.denominator;
+            otherDenominator /= (uint)otherNod;
+            return (numeratorTmp == otherNumerator && denominatorTmp == otherDenominator);
+        }
+        public int  GetNumerator
+        {
+            get
+            {
+                return numerator;
+            }
+        }
+        public uint GetDenominator
+        {
+            get
+            {
+                return denominator;
+            }
         }
         public override bool Equals(Object obj)
         {
-            if (obj == null)
-                return false;
+            if (obj == null) return false;
 
             RationalNumber number = obj as RationalNumber;
-            if (number == null)
+            if (number == null) 
                 return false;
-            else
+            else 
                 return Equals(number);
         }
         public override int GetHashCode()
         {
             return Tuple.Create(numerator, (int)denominator).GetHashCode();  //Tuple, который отражает порядок каждого поля.
         }
-        public int CompareTo(object o)
+        public int CompareTo(RationalNumber p)
         {
-            RationalNumber p = o as RationalNumber;
             double fullNumerator1 = (double)this.numerator * (double)p.denominator;
             double fullNumerator2 = (double)p.numerator * (double)this.denominator;
             if (p != null)
                 return fullNumerator1.CompareTo(fullNumerator2);
-            else
+            else 
                 throw new Exception("Невозможно сравнить два объекта");
+        }
+        public int CompareTo(object obj)
+        {
+            throw new NotImplementedException();
         }
         public static explicit operator int(RationalNumber number)        //Conversion
         {
@@ -96,20 +112,23 @@ namespace Лр7
                     throw new ArgumentException(msg);
             }
         }
-        public void ToRationalNumber(string number, string fmt)
+        public static RationalNumber Parse(string number, string fmt)
         {
             double a = Convert.ToDouble(number);
             int b = (int)a;
-            denominator = 1;
+            uint denominatorTmp = 1;
+            int numeratorTmp = 0;
+
             while ((a - (double)b) != 0)
             {
                 a *= 10;
                 b = (int)a;
-                denominator *= 10;
+                denominatorTmp *= 10;
             }
-            int nod = NOD((int)a, (int)denominator);
-            numerator = (int)(a / nod);
-            denominator = (uint)(denominator / nod);  
+            int nod = NOD((int)a, (int)denominatorTmp);
+            numeratorTmp = (int)(a / nod);
+            denominatorTmp = (uint)(denominatorTmp / nod);
+            return new RationalNumber(numeratorTmp, denominatorTmp);
         }
         private  static int NOD(int a, int b)
         {
@@ -151,40 +170,28 @@ namespace Лр7
             int f = NOD((int)a.denominator, (int)b.denominator);
             int a1 = ((int)b.denominator / f * a.numerator);
             int b1 = ((int)a.denominator / f * b.numerator);
-            if (a1 > b1)
-                return true;
-            else
-                return false;
+            return (a1 > b1);
         }
         public static bool operator <(RationalNumber a, RationalNumber b)
         {
             int f = NOD((int)a.denominator, (int)b.denominator);
             int a1 = ((int)b.denominator / f * a.numerator);
             int b1 = ((int)a.denominator / f * b.numerator);
-            if (a1 < b1)
-                return true;
-            else
-                return false;
+            return (a1 < b1);
         }
         public static bool operator >=(RationalNumber a, RationalNumber b)
         {
             int f = NOD((int)a.denominator, (int)b.denominator);
             int a1 = ((int)b.denominator / f * a.numerator);
             int b1 = ((int)a.denominator / f * b.numerator);
-            if (a1 >= b1)
-                return true;
-            else
-                return false;
+            return (a1 >= b1);
         }
         public static bool operator <=(RationalNumber a, RationalNumber b)
         {
             int f = NOD((int)a.denominator, (int)b.denominator);
             int a1 = ((int)b.denominator / f * a.numerator);
             int b1 = ((int)a.denominator / f * b.numerator);
-            if (a1 <= b1)
-                return true;
-            else
-                return false;
+            return (a1 <= b1);
         }
     }
 }

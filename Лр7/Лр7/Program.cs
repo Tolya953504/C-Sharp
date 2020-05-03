@@ -16,7 +16,7 @@ namespace Лр7
             RationalNumber c = new RationalNumber();
            // string d = "12,2";
             string j = "45,06E+001";
-            c.ToRationalNumber(j, "F");
+            c = RationalNumber.Parse(j, "F");
             Console.WriteLine(c.ToString());
             //string j = "45,06E+001";
             //double t = Convert.ToDouble(j);

@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\AnatoliHP\\Documents\\Embarcadero\\Studio\\Projects\\953504\\ИСП 2сем\\7лр\\Лр7\\Лр7\\Лр7.csproj",
+      "projectUniqueName": "C:\\Users\\AnatoliHP\\Documents\\Embarcadero\\Studio\\Projects\\953504\\ИСП 2сем\\GitHub\\C-Sharp\\Лр7\\Лр7\\Лр7.csproj",
       "projectName": "Лр7",
-      "projectPath": "C:\\Users\\AnatoliHP\\Documents\\Embarcadero\\Studio\\Projects\\953504\\ИСП 2сем\\7лр\\Лр7\\Лр7\\Лр7.csproj",
+      "projectPath": "C:\\Users\\AnatoliHP\\Documents\\Embarcadero\\Studio\\Projects\\953504\\ИСП 2сем\\GitHub\\C-Sharp\\Лр7\\Лр7\\Лр7.csproj",
       "packagesPath": "C:\\Users\\AnatoliHP\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\AnatoliHP\\Documents\\Embarcadero\\Studio\\Projects\\953504\\ИСП 2сем\\7лр\\Лр7\\Лр7\\obj\\",
+      "outputPath": "C:\\Users\\AnatoliHP\\Documents\\Embarcadero\\Studio\\Projects\\953504\\ИСП 2сем\\GitHub\\C-Sharp\\Лр7\\Лр7\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\AnatoliHP\\AppData\\Roaming\\NuGet\\NuGet.Config",
