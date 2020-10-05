@@ -1,0 +1,125 @@
+using System;
+using System.Collections;
+using System.IO;
+using System.Linq;
+using System.Numerics;
+using System.Security.Cryptography;
+using System.Text;
+
+namespace RockPaperScissors
+{
+    class Program
+    {
+        public static string Encode(byte[] key, string input)
+        {
+            HMACSHA256 myhmacsha1 = new HMACSHA256(key);
+            byte[] byteArray = Encoding.ASCII.GetBytes(input);
+            MemoryStream stream = new MemoryStream(byteArray);
+            return myhmacsha1.ComputeHash(stream).Aggregate("", (s, e) => s + String.Format("{0:x2}", e), s => s);
+        }
+        class RockPaperScissors
+        {
+            public RockPaperScissors(string[] gameObj)
+            { 
+                this.gameObj = gameObj;
+                ComputerChoice();
+            }
+            void ComputerChoice()
+            {
+                secretkey = new byte[32];
+                using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
+                {
+                    rng.GetBytes(secretkey);
+                    Random rnd = new Random();
+                    Console.WriteLine("HMAC: " + Encode(secretkey, gameObj[GenerateComputerChoice()]));
+                }
+            }
+            public bool Play(int yourChoice)
+            {
+                if (yourChoice < 0 || yourChoice > gameObj.Length)
+                {
+                    return false;
+                }
+                else if(yourChoice == 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    if (yourChoice - 1 == computerChoice)
+                    {
+                        Console.WriteLine("No winner");
+                    }
+                    else
+                    {
+                        bool lose = false;
+                        for (int i = 0; i < gameObj.Length / 2; i++)
+                        {
+                            if (yourChoice + i == gameObj.Length)
+                            {
+                                yourChoice = 0;
+                            }
+                            if (yourChoice + i == computerChoice)
+                            {
+                                lose = true;
+                            }
+                        }
+                            Console.WriteLine(lose == true ? "You lose!" : "You win!");
+                    }
+                    Console.WriteLine($"Your move {gameObj[yourChoice-1]}\nComputer move {gameObj[computerChoice]}");
+                    var bigInteger = new BigInteger(secretkey.Concat(new byte[] { 0 }).ToArray());
+                    Console.WriteLine("HMAC key: " + bigInteger.ToString("X"));
+                }
+                return true;
+            }
+            public void ShowMenu()
+            {
+                for (var i = 0; i < gameObj.Length; i++)
+                {
+                    Console.WriteLine($"{i + 1} - {gameObj[i]}");
+                }
+                Console.WriteLine("0 - Exit");
+            }
+            int GenerateComputerChoice()
+            {
+                Random rnd = new Random();
+                computerChoice = rnd.Next(0, gameObj.Length);
+                return computerChoice;
+            }
+            string[] gameObj { get; }
+            private int computerChoice { get; set; }
+            public byte[] secretkey;
+        }
+        static void Main(string[] args)
+        {
+            try
+            {
+                int length = args.Length;
+                args = args.Distinct().ToArray();
+                if (length != args.Length || length < 3 || length % 2 == 0)
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("Invalid Input");
+                return;
+            }
+            var newGame = new RockPaperScissors(args);
+            int choice = 0;
+            do
+            {
+                newGame.ShowMenu();
+                try
+                {
+                    choice = Convert.ToInt32(Console.ReadLine());
+                }
+                catch (FormatException)
+                {
+                    choice = -1;
+                }
+            } while (!newGame.Play(choice));         
+        }
+    }
+}
